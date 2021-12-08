@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XE1j4nmXP9JNENv8Vu5axRJgo9rGUG0moy+4HEGQizAzgx7btzJpspWchAuE+fuLaGEJnp/pdhOpIi+/G4WuGw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joel.hellman\\Documents\\Prog2\\DungeonMan\\DungeonMan\\DungeonMan.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joel.hellman\\.nuget\\packages\\raylib-cs\\3.7.0.1\\raylib-cs.3.7.0.1.nupkg.sha512",
+    "C:\\Users\\joel.hellman\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
