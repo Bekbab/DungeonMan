@@ -14,6 +14,7 @@ namespace DungeonMan
 
             Slime s = new Slime();
             DungeonMan d = new DungeonMan(450, 450);
+            Cutscene c1 = new Cutscene();
 
             Raylib.SetTargetFPS(60);
 
@@ -21,6 +22,7 @@ namespace DungeonMan
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
+                c1.IntroCutscene();
                 Raylib.ClearBackground(Color.GRAY);
                 s.Update();
                 s.Draw();

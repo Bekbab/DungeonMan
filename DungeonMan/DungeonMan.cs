@@ -17,19 +17,9 @@ namespace DungeonMan
 
         public void WalkAnimation()
         {
-            if (walking)
-            {
-                timerActive = true;
-            }
-            else if (walking == false)
-            {
-                timerActive = false;
-            }
 
-            if (timerActive == true)
-            {
-                timer += Raylib.GetFrameTime();
-            }
+            timer += Raylib.GetFrameTime();
+
 
             if (timer >= 0.15f)
             {
@@ -38,7 +28,7 @@ namespace DungeonMan
                 frame += 1;
             }
 
-            if (frame > 2)
+            if (frame > 5)
             {
                 frame = 0;
             }
@@ -50,9 +40,9 @@ namespace DungeonMan
 
             Raylib.DrawTexturePro(
             dungeonManTexture,
-            new Rectangle(16 * frame, 0, 16, 16), // Source
-            destRec = new Rectangle(position.X, position.Y, 64, 64), // Destination
-            new Vector2(32, 32), // Origin
+            new Rectangle(32 * frame, 0, 32, 32), // Source
+            destRec = new Rectangle(position.X, position.Y, 128, 128), // Destination
+            new Vector2(64, 64), // Origin
             rotation,
             Color.WHITE);
 

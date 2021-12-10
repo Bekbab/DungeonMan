@@ -6,9 +6,9 @@ namespace DungeonMan
 {
     public class Slime : Character
     {
-        
+
         private Texture2D slimeTexture = Raylib.LoadTexture(@"Slime.png");
-        
+
 
         public void WalkAnimation()
         {
