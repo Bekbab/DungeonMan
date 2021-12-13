@@ -13,10 +13,13 @@ namespace DungeonMan
 
         List<Vector2> sizes = new List<Vector2>();
         List<string> prints = new List<string>();
+        Timer t2 = new Timer();
+
         public void Print()
         {
             if (printing == true)
             {
+
 
                 foreach (string print in prints)
                 {
@@ -27,12 +30,13 @@ namespace DungeonMan
                 foreach (Vector2 size in sizes)
                 {
                     Raylib.DrawTextEx(f1, prints[sizes.IndexOf(size)], new Vector2(960 - size.X / 2, sizes.IndexOf(size) * 200 + 100), 150, 0, Color.RED);
+                    t2.Wait(1.0f);
                 }
-
 
                 printing = false;
             }
         }
+
         public void IntroCutscene()
         {
 
@@ -48,6 +52,8 @@ namespace DungeonMan
             });
             printing = true;
             Print();
+
+
 
             DungeonMan c1 = new DungeonMan(250, 250);
 

@@ -22,12 +22,15 @@ namespace DungeonMan
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
+
                 c1.IntroCutscene();
-                Raylib.ClearBackground(Color.GRAY);
-                s.Update();
-                s.Draw();
-                d.Draw();
+
+                // Raylib.ClearBackground(Color.WHITE);
+                // s.Update();
+                // s.Draw();
+                // d.Draw();
                 Raylib.EndDrawing();
+
             }
 
 

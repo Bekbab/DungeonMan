@@ -21,5 +21,7 @@ namespace DungeonMan
 
         protected Rectangle destRec;
         protected Rectangle hitbox;
+
+        protected Timer t1 = new Timer();
     }
 }

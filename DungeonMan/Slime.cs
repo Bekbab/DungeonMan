@@ -12,6 +12,8 @@ namespace DungeonMan
 
         public void WalkAnimation()
         {
+            t1.StartSpriteTimer(0.15f, 3, false);
+
             if (walking)
             {
                 timerActive = true;
@@ -21,22 +23,7 @@ namespace DungeonMan
                 timerActive = false;
             }
 
-            if (timerActive == true)
-            {
-                timer += Raylib.GetFrameTime();
-            }
 
-            if (timer >= 0.15f)
-            {
-                timer = 0.0f;
-
-                frame += 1;
-            }
-
-            if (frame > 2)
-            {
-                frame = 0;
-            }
         }
 
         public void Update()
