@@ -19,18 +19,22 @@ namespace DungeonMan
             Raylib.SetTargetFPS(60);
 
 
+
+
             while (!Raylib.WindowShouldClose())
             {
-                Raylib.BeginDrawing();
 
+
+                Raylib.BeginDrawing();
                 c1.IntroCutscene();
+
 
                 // Raylib.ClearBackground(Color.WHITE);
                 // s.Update();
                 // s.Draw();
                 // d.Draw();
-                Raylib.EndDrawing();
 
+                Raylib.EndDrawing();
             }
 
 

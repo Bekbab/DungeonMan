@@ -13,28 +13,43 @@ namespace DungeonMan
 
         List<Vector2> sizes = new List<Vector2>();
         List<string> prints = new List<string>();
+
         Timer t2 = new Timer();
 
+        public bool running = true;
+
+        public int part = 1;
         public void Print()
         {
-            if (printing == true)
+            if (printing)
             {
-
 
                 foreach (string print in prints)
                 {
                     sizes.Add(Raylib.MeasureTextEx(f1, print, 150, 0));
                 }
 
+                t2.StartTimer(prints.Count);
 
-                foreach (Vector2 size in sizes)
+                if (t2.timerEnd == true)
                 {
-                    Raylib.DrawTextEx(f1, prints[sizes.IndexOf(size)], new Vector2(960 - size.X / 2, sizes.IndexOf(size) * 200 + 100), 150, 0, Color.RED);
-                    t2.Wait(1.0f);
+                    part = 2;
+                    printing = false;
+                }
+                else
+                {
+                    for (int i = 0; i * 2 < t2.timer && i < prints.Count; i++)
+                    {
+                        Raylib.DrawTextEx(f1, prints[i], new Vector2(960 - sizes[i].X / 2, i * 200 + 100), 150, 0, Color.RED);
+                    }
                 }
 
-                printing = false;
+
+
+
+
             }
+
         }
 
         public void IntroCutscene()
@@ -42,23 +57,36 @@ namespace DungeonMan
 
             Raylib.ClearBackground(Color.WHITE);
 
-            prints.AddRange(new List<string>
+            if (part == 1)
             {
-                "This is",
-                "Dungeonman",
-                "Hero of Kremoria",
-                "Saviour of Time",
-                "Slayer of Gargoroth"
-            });
-            printing = true;
-            Print();
+                prints.AddRange(new List<string>
+                {
+                    "This is",
+                    "Dungeonman",
+                    "Hero of Kremoria",
+                    "Saviour of Time",
+                    "Slayer of Gargoroth"
+                });
+                printing = true;
+                Print();
+            }
 
 
+            if (part == 2 && printing == false)
+            {
+                DungeonMan c1 = new DungeonMan(250, 250);
+                prints.Clear();
+                sizes.Clear();
 
-            DungeonMan c1 = new DungeonMan(250, 250);
+                prints.AddRange(new List<string>
+                {
+                    "You are",
+                    "NOT",
+                    "Dungeonman",
+                });
 
-
-
+                printing = true;
+            }
 
         }
     }

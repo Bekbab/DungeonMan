@@ -8,7 +8,7 @@ namespace DungeonMan
     public class Timer
     {
 
-        float timer = 0.0f;
+        public float timer = 0.0f;
         bool timerActive = false;
         int frame;
         public bool timerEnd;
