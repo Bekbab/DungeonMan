@@ -9,8 +9,8 @@ namespace DungeonMan
     {
 
         public float timer = 0.0f;
-        bool timerActive = false;
-        int frame;
+        public bool timerActive = false;
+        public int frame;
         public bool timerEnd;
         public void StartTimer(float delay) //continous timer which resets after a delay of x seconds
         {
@@ -32,25 +32,16 @@ namespace DungeonMan
             }
         }
 
-        public void Wait(float delay) //allows for delays in for example loops, waits x seconds
-        {
 
-            while (delay > 0)
-            {
-                delay -= Raylib.GetFrameTime();
-            }
-        }
-
-        public void StartSpriteTimer(float delay, int frames, bool active) //timer for drawing sprites, define delay between frames in seconds, amount of frames, and whether the timer enters active or not
+        public void StartSpriteTimer(float delay, int frames) //timer for drawing sprites, define delay between frames in seconds, amount of frames, and whether the timer enters active or not
         {
-            timerActive = active;
 
             if (timerActive == true)
             {
                 timer += Raylib.GetFrameTime();
             }
 
-            if (timer >= 0.15f)
+            if (timer >= delay)
             {
                 timer = 0.0f;
 
