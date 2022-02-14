@@ -8,7 +8,11 @@ namespace DungeonMan
     public class Cutscene
     {
         // Font f1 = Raylib.LoadFont(@"Olondona.otf");
-        Font f1 = Raylib.LoadFontEx("Olondona.otf", 150, null, -1);
+        Font f1 = Raylib.LoadFontEx("Olondona.otf", 30, null, -1);
+
+        Sound splat = Raylib.LoadSound("splat.ogg");
+        Sound music = Raylib.LoadSound("music.ogg");
+        Texture2D boot = Raylib.LoadTexture("Boot.png");
 
         bool printing;
 
@@ -24,13 +28,15 @@ namespace DungeonMan
         public int part = 1;
 
         float printTime;
+        bool soundplayed1 = false;
+        bool soundplayed2 = false;
 
         Slime s1;
         DungeonMan d1;
         public Cutscene()
         {
             s1 = new Slime(1670, 250);
-            d1 = new DungeonMan(250, 250, s1);
+            d1 = new DungeonMan(250, 250, s1, false);
         }
 
 
@@ -69,6 +75,14 @@ namespace DungeonMan
 
         public void IntroCutscene()
         {
+            if (!soundplayed1)
+            {
+                if (!Raylib.IsSoundPlaying(music))
+                {
+                    Raylib.PlaySound(music);
+                    soundplayed1 = true;
+                }
+            }
 
             if (prints.Count < 1 && sizes.Count < 1)
             {
@@ -155,7 +169,28 @@ namespace DungeonMan
                 part += 1;
             }
 
+            if (part > 3)
+            {
+                Raylib.StopSound(music);
+                Program.window = 1;
+            }
+        }
 
+        public void GameOverCutscene()
+        {
+            Raylib.ClearBackground(Color.DARKGRAY);
+            Raylib.DrawTextureEx(boot, new Vector2((Raylib.GetScreenWidth() / 2) - boot.width, 0), 0, 2, Color.WHITE);
+            Raylib.DrawTextEx(f1, "You", new Vector2(100, 150), 250, 0, Color.RED);
+            Raylib.DrawTextEx(f1, "Died", new Vector2(1100, 150), 250, 0, Color.RED);
+
+            if (!soundplayed2)
+            {
+                if (!Raylib.IsSoundPlaying(splat))
+                {
+                    Raylib.PlaySound(splat);
+                    soundplayed2 = true;
+                }
+            }
         }
     }
 }

@@ -12,11 +12,13 @@ namespace DungeonMan
         {
             Raylib.InitWindow(1920, 1080, "DUNGEONMAN!");
             Raylib.SetTargetFPS(60);
+            Raylib.InitAudioDevice();
+
+            Sound splat = Raylib.LoadSound("splat.ogg");
+
 
             Cutscene c1 = new Cutscene();
             Game g = new Game();
-
-
 
 
             while (!Raylib.WindowShouldClose() && window == 0)
@@ -35,7 +37,9 @@ namespace DungeonMan
 
             while (!Raylib.WindowShouldClose() && window == 2)
             {
-                
+                Raylib.BeginDrawing();
+                c1.GameOverCutscene();
+                Raylib.EndDrawing();
             }
 
 

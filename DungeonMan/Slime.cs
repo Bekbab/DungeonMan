@@ -11,8 +11,6 @@ namespace DungeonMan
 
         public Slime(int x, int y)
         {
-
-
             position.X = x;
             position.Y = y;
 
@@ -88,7 +86,7 @@ namespace DungeonMan
             Color.WHITE);
 
             hitbox = new Rectangle(position.X - origin.X, position.Y - origin.X, destRec.width, destRec.height);
-            Raylib.DrawRectangleLinesEx(hitbox, 5, Color.BLACK);
+            // Raylib.DrawRectangleLinesEx(hitbox, 5, Color.BLACK);
 
 
 

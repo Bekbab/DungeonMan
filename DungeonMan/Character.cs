@@ -14,9 +14,9 @@ namespace DungeonMan
         public bool walking;
 
         protected Rectangle destRec;
-        protected Vector2 position;
+        public Vector2 position;
 
-        protected Rectangle hitbox;
+        public Rectangle hitbox;
         protected Timer t1 = new Timer();
 
         protected float delay;

@@ -9,21 +9,26 @@ namespace DungeonMan
     {
         private Texture2D dungeonManTexture = Raylib.LoadTexture(@"DungeonMan.png");
         Slime s1;
+        bool chasing;
 
-        public DungeonMan(int x, int y, Slime s)
+
+        public DungeonMan(int x, int y, Slime s, bool chase)
         {
             s1 = s;
+
+            speed = 400;
 
             position.X = x;
             position.Y = y;
 
             frames = 6;
             delay = 0.15f;
+
+            chasing = chase;
         }
 
         public void WalkAnimation()
         {
-
             t1.StartSpriteTimer(delay, frames);
             walking = true;
             if (walking)
@@ -38,9 +43,19 @@ namespace DungeonMan
 
         public void Update()
         {
-            WalkAnimation();
 
-            
+            if (Raylib.CheckCollisionRecs(hitbox, s1.hitbox))
+            {
+                Game.gameOver = true;
+            }
+
+            if (chasing)
+            {
+                Chase();
+            }
+
+
+
         }
         public void Draw()
         {
@@ -54,10 +69,17 @@ namespace DungeonMan
             Color.WHITE);
 
             hitbox = new Rectangle(position.X - origin.X, position.Y - origin.X, destRec.width, destRec.height);
-            Raylib.DrawRectangleLinesEx(hitbox, 5, Color.BLACK);
+            // Raylib.DrawRectangleLinesEx(hitbox, 5, Color.BLACK);
+        }
 
+        public void Chase()
+        {
 
-
+            WalkAnimation();
+            Vector2 slimePos = new Vector2(s1.position.X, s1.position.Y);
+            Vector2 delta = slimePos - position;
+            delta = Vector2.Normalize(delta);
+            position += delta * speed * Raylib.GetFrameTime();
 
         }
 
