@@ -47,16 +47,15 @@ namespace DungeonMan
 
                 foreach (string print in prints)
                 {
-                    sizes.Add(Raylib.MeasureTextEx(f1, print, 150, 0));
+                    sizes.Add(Raylib.MeasureTextEx(f1, print, 150, 0)); //Measures the strings and adds them to the list of vectors
                 }
 
-                printTime = prints.Count * 2;
+                printTime = prints.Count * 2; //there is a 2 second delay between printing each string so the time is twice the amount of strings in the list
 
                 t2.StartTimer(printTime);
 
                 if (t2.timerEnd == true)
                 {
-
                     prints.Clear();
                     sizes.Clear();
                     printing = false;
@@ -66,7 +65,7 @@ namespace DungeonMan
                 {
                     for (int i = 0; i * 2 < t2.timer && i < prints.Count; i++)
                     {
-                        Raylib.DrawTextEx(f1, prints[i], new Vector2(960 - sizes[i].X / 2, i * 200 + 100), 150, 0, Color.RED);
+                        Raylib.DrawTextEx(f1, prints[i], new Vector2(960 - sizes[i].X / 2, i * 200 + 100), 150, 0, Color.RED); // prints a new row every 2 seconds
                     }
                 }
             }
@@ -94,16 +93,16 @@ namespace DungeonMan
             }
 
             Raylib.ClearBackground(Color.WHITE);
-
+            //Information for debug 
             // Raylib.DrawText($"{t2.timer}", 100, 100, 20, Color.BLACK);
-            // Raylib.DrawText($"{prints.Count}", 100, 200, 20, Color.BLACK);
+            // Raylib.DrawText($"{prints.Count}", 100, 200, 20, Color.BLACK); 
             // Raylib.DrawText($"{part}", 100, 300, 20, Color.BLACK);
             // Raylib.DrawText($"{s1.walking}", 100, 400, 20, Color.BLACK);
             if (part == 1)
             {
                 if (!listFull)
                 {
-                    prints.AddRange(new List<string>
+                    prints.AddRange(new List<string> // adds the strings only if the list isn't full.
                     {
                         "This is",
                         "Dungeonman",
@@ -164,12 +163,12 @@ namespace DungeonMan
                 s1.Draw();
             }
 
-            if (printing == false)
+            if (printing == false) // when it stops printing it goes to the next part
             {
                 part += 1;
             }
 
-            if (part > 3)
+            if (part > 3) // all parts finished, starting the game
             {
                 Raylib.StopSound(music);
                 Program.window = 1;
