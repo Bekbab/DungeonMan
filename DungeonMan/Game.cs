@@ -28,7 +28,7 @@ namespace DungeonMan
             if (!gameOver)
             {
                 Raylib.ClearBackground(Color.WHITE);
-                if (t3.timerEnd)
+                if (t3.timerEnd)// When the timer runs out dungeonman spawns and begins chasing the player
                 {
                     youreFucked = true;
                 }

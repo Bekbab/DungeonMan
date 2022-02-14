@@ -36,7 +36,7 @@ namespace DungeonMan
         public void Update()
         {
             WalkAnimation();
-
+            //movement
             if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
             {
                 position.Y -= speed * Raylib.GetFrameTime();

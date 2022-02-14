@@ -19,10 +19,10 @@ namespace DungeonMan
         public Rectangle hitbox;
         protected Timer t1 = new Timer();
 
-        protected float delay;
+        protected float delay; //how often the sprite should update
 
         protected Vector2 origin;
 
-        protected int frames;
+        protected int frames; //how many frames it's sprite has
     }
 }

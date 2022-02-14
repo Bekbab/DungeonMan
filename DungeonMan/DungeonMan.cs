@@ -12,7 +12,7 @@ namespace DungeonMan
         bool chasing;
 
 
-        public DungeonMan(int x, int y, Slime s, bool chase)
+        public DungeonMan(int x, int y, Slime s, bool chase)//needs to reference a slime to be able to track it's location and hitbox
         {
             s1 = s;
 
@@ -46,16 +46,13 @@ namespace DungeonMan
 
             if (Raylib.CheckCollisionRecs(hitbox, s1.hitbox))
             {
-                Game.gameOver = true;
+                Game.gameOver = true; // if the slime and dungeonman collides the game ends
             }
 
             if (chasing)
             {
                 Chase();
             }
-
-
-
         }
         public void Draw()
         {
@@ -72,7 +69,7 @@ namespace DungeonMan
             // Raylib.DrawRectangleLinesEx(hitbox, 5, Color.BLACK);
         }
 
-        public void Chase()
+        public void Chase() //gets the position of the slime and moves towards it. 
         {
 
             WalkAnimation();
